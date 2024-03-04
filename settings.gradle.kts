@@ -1,0 +1,2 @@
+rootProject.name = "jhdf-webinar"
+

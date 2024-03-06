@@ -4,7 +4,8 @@ import numpy as np
 f = h5py.File('webinar_demo.hdf5', 'w', libver='earliest')
 
 simpleData = np.arange(10)
-f.create_dataset('ints', data=simpleData, dtype='i4')
+ints = f.create_dataset('ints', data=simpleData, dtype='i4')
+ints.attrs["webinar_date"] = "March 15, 2024"
 
 utf8 = h5py.special_dtype(vlen=str)
 gender_enum_dtype = h5py.enum_dtype({"MALE": 0, "FEMALE": 1}, basetype=np.uint8)
@@ -26,10 +27,10 @@ data[3] = ('Ellie', 'Kyle', 1, 22, 4.0, [2.1, 74.1, -3.8])
 
 f.create_dataset('people', data=data)
 
-data_2d_group = f.create_group('2d_data')
+group = f.create_group('some_group')
 data2d = np.arange(350).reshape(7, 50)
-data_2d_group.create_dataset('2d_data', data=data2d, dtype='f8')
-data_2d_group.create_dataset('byteshuffle', data=data2d, dtype='f8', chunks=(3, 4), shuffle=True, compression="gzip")
+group.create_dataset('2d_data', data=data2d, dtype='f8')
+group.create_dataset('byteshuffle', data=data2d, dtype='f8', chunks=(3, 4), shuffle=True, compression="gzip")
 
 f.flush()
 f.close()

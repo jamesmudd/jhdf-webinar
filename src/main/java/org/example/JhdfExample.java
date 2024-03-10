@@ -3,14 +3,14 @@ package org.example;
 import io.jhdf.HdfFile;
 import io.jhdf.api.Dataset;
 import io.jhdf.api.Group;
-import io.jhdf.api.Node;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.IntSummaryStatistics;
 
-public class Main {
+public class JhdfExample {
+
     public static void main(String[] args) {
         System.out.println("Hello world!");
 
@@ -46,10 +46,12 @@ public class Main {
             System.out.println(ArrayUtils.toString(flatData));
 
 
+            // Slice some data
             Dataset dataset = (Dataset) someGroup.getChild("2d_data");
             Object slice = dataset.getData(new long[]{1, 0}, new int[]{2, 5});
             System.out.println(ArrayUtils.toString(slice));
 
+            // Compound dataset example - I think maybe some API improvement here
             Dataset peopleDataset = hdfFile.getDatasetByPath("/people");
             Object peopleData = peopleDataset.getData();
             System.out.println(peopleData);

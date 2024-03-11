@@ -12,10 +12,10 @@ import java.util.IntSummaryStatistics;
 public class JhdfExample {
 
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        System.out.println("Hello jHDF!");
 
         // Auto-closable
-        try(HdfFile hdfFile = new HdfFile(Path.of("/home/james/git/jhdf-webinar/hdf5-example/webinar_demo.hdf5"))) {
+        try (HdfFile hdfFile = new HdfFile(Path.of("/home/james/git/jhdf-webinar/hdf5-example/webinar_demo.hdf5"))) {
             // Just check things look right
             System.out.println(hdfFile.getChildren());
 
@@ -44,7 +44,6 @@ public class JhdfExample {
             // Or for potential integration
             Object flatData = byteshuffleDataset.getDataFlat();
             System.out.println(ArrayUtils.toString(flatData));
-
 
             // Slice some data
             Dataset dataset = (Dataset) someGroup.getChild("2d_data");

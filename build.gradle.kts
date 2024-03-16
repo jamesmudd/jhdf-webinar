@@ -11,10 +11,10 @@ repositories {
 
 dependencies {
     // jHDF - HDF5 lib
-    implementation("io.jhdf:jhdf:0.6.10")
+    // implementation("io.jhdf:jhdf:0.6.10")
 
-    // jHDF for writing support....
-    // implementation("io.jhdf:jhdf:0.7.0-alpha")
+    // jHDF alpha for writing support....
+    implementation("io.jhdf:jhdf:0.7.0-alpha")
 
     // Apache Commons for Array utils etc
     implementation("org.apache.commons:commons-lang3:3.14.0")
